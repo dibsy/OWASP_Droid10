@@ -35,6 +35,14 @@
             android:name=".CrossSiteScriptingScanActivity"
             android:label="@string/title_activity_cross_site_scripting_scan" >
         </activity>
+        <activity
+            android:name=".vectoractivities.XSSVectors"
+            android:label="@string/title_activity_xssvectors" >
+        </activity>
+        <activity
+            android:name=".VectorActivity"
+            android:label="@string/title_activity_vector" >
+        </activity>
     </application>
 
 </manifest>

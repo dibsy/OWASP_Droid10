@@ -47,6 +47,14 @@
         android:background="@drawable/bluetheme"
         android:id="@+id/btn_about"/>
 
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/CoolText"
+        android:text="@string/vectors"
+        android:background="@drawable/bluetheme"
+        android:id="@+id/btn_vectors"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -20,5 +20,8 @@
     <string name="title_activity_cross_site_scripting_scan">CrossSiteScriptingScanActivity</string>
     <string name="sillycon">http://www.sillycon.org</string>
     <string name="dibyendu">\u0040dibsyhex</string>
+    <string name="title_activity_xssvectors">XSSVectors</string>
+    <string name="vectors">Vectors</string>
+    <string name="title_activity_vector">VectorActivity</string>
 
 </resources>

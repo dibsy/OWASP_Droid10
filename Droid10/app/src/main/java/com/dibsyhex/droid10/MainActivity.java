@@ -20,8 +20,8 @@ public class MainActivity extends Activity {
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent about_intent=new Intent(MainActivity.this,ScanActivity.class);
-                MainActivity.this.startActivity(about_intent);
+                Intent scan_intent=new Intent(MainActivity.this,ScanActivity.class);
+                MainActivity.this.startActivity(scan_intent);
             }
         });
 
@@ -29,8 +29,8 @@ public class MainActivity extends Activity {
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent about_intent=new Intent(MainActivity.this,CreditsActivity.class);
-                MainActivity.this.startActivity(about_intent);
+                Intent credits_intent=new Intent(MainActivity.this,CreditsActivity.class);
+                MainActivity.this.startActivity(credits_intent);
             }
         });
 
@@ -43,7 +43,14 @@ public class MainActivity extends Activity {
             }
         });
 
-
+        Button btn_vector=(Button)findViewById(R.id.btn_vectors);
+        btn_vector.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vector_intent=new Intent(MainActivity.this,VectorActivity.class);
+                MainActivity.this.startActivity(vector_intent);
+            }
+        });
 
 
     }

@@ -1,39 +1,31 @@
 package com.dibsyhex.droid10;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.dibsyhex.droid10.vectoractivities.XSSVectors;
 
 
-public class CreditsActivity extends ActionBarActivity {
+public class VectorActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credits);
+        setContentView(R.layout.activity_vector);
 
-        String list[]=new String[]{
-          "Kate Hartmann ",
-          "Johanna Curiel",
-          "Krishnendu Paul @bidhata"
-        };
-
-
-        ArrayList<String>credits=new ArrayList<String>();
-        credits.addAll(Arrays.asList(list));
-
-
-        ListView creditsList=(ListView)findViewById(R.id.creditslist);
-
-        ArrayAdapter<String>arrayAdapter=new ArrayAdapter<String>(this,R.layout.simple_list_item_1,credits);
-        creditsList.setAdapter(arrayAdapter);
-
+        Button xss_vector_btn=(Button)findViewById(R.id.xss_vector_btn);
+        xss_vector_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(VectorActivity.this, XSSVectors.class);
+                VectorActivity.this.startActivity(intent);
+            }
+        });
 
 
     }
@@ -42,7 +34,7 @@ public class CreditsActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_credits, menu);
+        getMenuInflater().inflate(R.menu.menu_vector, menu);
         return true;
     }
 
