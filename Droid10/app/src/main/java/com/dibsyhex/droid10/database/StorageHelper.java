@@ -50,14 +50,18 @@ public class StorageHelper {
             try{
                 db.execSQL(createQuery);
             }catch (Exception e){
-                Log.e("ERROR",e.toString());
+                Log.e("ERROR","onCreate()"+e.toString());
             }
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS "+tableName);
-            onCreate(db);
+            try {
+                db.execSQL("DROP TABLE IF EXISTS " + tableName);
+                onCreate(db);
+            }catch (Exception e){
+                Log.e("ERROR","onUpgrade()"+e.toString());
+            }
 
         }
     }
@@ -67,7 +71,7 @@ public class StorageHelper {
             sqLiteDatabase = databaseHelper.getWritableDatabase();
             return this;
         }catch (Exception e){
-            Log.e("ERROR",e.toString());
+            Log.e("ERROR","connect()"+e.toString());
             return this;
         }
     }
@@ -83,7 +87,7 @@ public class StorageHelper {
             this.connect();
             return sqLiteDatabase.insert(tableName, null, contentValues);
         }catch (Exception e){
-            Log.e("ERROR",e.toString());
+            Log.e("ERROR","insert()"+e.toString());
             return 0;
         }
 
@@ -94,7 +98,7 @@ public class StorageHelper {
             this.connect();
             return sqLiteDatabase.query(tableName,new String[]{vectorID,vectorName},null,null,null,null,null);
         }catch (Exception e){
-            Log.e("ERROR",e.toString());
+            Log.e("ERROR","retrieve()"+e.toString());
             return null;
         }
 

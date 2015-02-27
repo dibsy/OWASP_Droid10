@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,22 +15,29 @@ import android.widget.Toast;
 
 import com.dibsyhex.droid10.R;
 import com.dibsyhex.droid10.database.StorageHelper;
+import com.dibsyhex.droid10.vectormodels.CrossSiteScriptingVectorModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class XSSVectors extends ActionBarActivity {
-    private StorageHelper storageHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xssvectors);
 
-        setup();
+        final CrossSiteScriptingVectorModel crossSiteScriptingVectorModel=CrossSiteScriptingVectorModel.getInstance();
+
+        crossSiteScriptingVectorModel.setup(XSSVectors.this);
+        crossSiteScriptingVectorModel.preload();
 
         Button read=(Button)findViewById(R.id.btn_viewxssvectors);
         read.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                read();
+                crossSiteScriptingVectorModel.read(XSSVectors.this);
             }
         });
 
@@ -39,7 +47,7 @@ public class XSSVectors extends ActionBarActivity {
             public void onClick(View v) {
                 EditText edttxt=(EditText)findViewById(R.id.edttxt_vector);
                 String vector=edttxt.getText().toString();
-                add(vector);
+                crossSiteScriptingVectorModel.add(vector);
 
 
             }
@@ -51,7 +59,7 @@ public class XSSVectors extends ActionBarActivity {
             public void onClick(View v) {
                 EditText editext=(EditText)findViewById(R.id.edttxt_id);
                 int vectorID=Integer.parseInt(editext.getText().toString());
-                delete(vectorID);
+                crossSiteScriptingVectorModel.delete(vectorID);
 
             }
         });
@@ -60,68 +68,7 @@ public class XSSVectors extends ActionBarActivity {
 
     }
 
-    public void setup(){
-        final String vectorID="vectorid";
-        final String vectorName="vectorname";
-        final String databaseName="Vectors";
-        final String tableName="CrossSiteScriptingVectors";
-        final String createQuery = "CREATE TABLE CrossSiteScriptingVectors(vectorid integer primary key autoincrement,vectorname text not null);";
 
-        storageHelper=new StorageHelper(this,vectorID,vectorName,databaseName,tableName,createQuery);
-
-    }
-
-    public void add(String vector){
-        try {
-            //final StorageHelper storageHelper = new StorageHelper(this);
-            storageHelper.insert(vector);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void delete(int id){
-        try {
-            //final StorageHelper storageHelper = new StorageHelper(this);
-            storageHelper.delete(id);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void read() {
-        try {
-            //final StorageHelper storageHelper = new StorageHelper(this);
-            Cursor c = storageHelper.retrieve();
-            String s=new String();
-            if (c.moveToFirst()) {
-                do{
-                    //Toast.makeText(this, c.getString(0) + " " + c.getString(1), Toast.LENGTH_LONG).show();
-                    s=s+c.getString(0)+" "+c.getString(1)+"\n";
-                }while (c.moveToNext());
-
-                final AlertDialog.Builder aBuilder=new AlertDialog.Builder(this);
-                aBuilder.setTitle("XSS Vectors");
-                aBuilder.setMessage(s);
-                aBuilder.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                AlertDialog alertDialog=aBuilder.create();
-                alertDialog.show();
-
-
-            }else {
-                Toast.makeText(this, "No vectors", Toast.LENGTH_LONG);
-            }
-        }catch (Exception e){
-            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show();
-        }
-
-    }
 
 
 

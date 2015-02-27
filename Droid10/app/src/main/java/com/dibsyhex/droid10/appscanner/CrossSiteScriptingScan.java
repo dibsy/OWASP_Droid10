@@ -4,8 +4,18 @@ package com.dibsyhex.droid10.appscanner;
  * Cross Site Scripting Scan
  */
 
+import android.content.Context;
+import android.util.Log;
+
+import com.dibsyhex.droid10.database.StorageHelper;
+import com.dibsyhex.droid10.vectoractivities.XSSVectors;
+import com.dibsyhex.droid10.vectormodels.CrossSiteScriptingVectorModel;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CrossSiteScriptingScan {
@@ -22,7 +32,14 @@ public class CrossSiteScriptingScan {
 
     public void scanXSS(String u){
         try {
-            for (String v : vectors) {
+
+           CrossSiteScriptingVectorModel crossSiteScriptingVectorModel=CrossSiteScriptingVectorModel.getInstance();
+           List<String>vectorList=crossSiteScriptingVectorModel.getVectorsList();
+
+
+
+
+            for (String v : vectorList) {
                 System.out.println(v);
                 //String url = "http://localhost:8080/VulnWeb/XssScan?search=" + v;
                 String url = u + v;
@@ -39,7 +56,7 @@ public class CrossSiteScriptingScan {
                 }
             }
         }catch (Exception e){
-            response=e.toString();
+            Log.e("ERROR","scanXSS()"+e.toString());
         }
     }
 
