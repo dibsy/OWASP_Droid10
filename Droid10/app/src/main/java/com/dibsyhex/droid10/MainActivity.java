@@ -29,6 +29,16 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btn_livescan=(Button)findViewById(R.id.btn_livescan);
+        btn_livescan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent livescan_inten=new Intent(MainActivity.this,LiveScanActivity.class);
+                MainActivity.this.startActivity(livescan_inten);
+            }
+        });
+
+
         Button btn_credits=(Button)findViewById(R.id.btn_credits);
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -7,75 +7,93 @@
     android:background="@drawable/bluetheme"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/droid10"
-        android:layout_gravity="center"
-        android:paddingBottom="12sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/CoolText"
-        android:text="@string/droid_10"
-        android:layout_gravity="center"
-        android:paddingBottom="12sp" />
-
-
-    <Button
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/CoolText"
-        android:text="@string/scan"
-        android:background="@drawable/bluetheme"
-        android:id="@+id/btn_scan"/>
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/CoolText"
-        android:text="@string/credits"
-        android:background="@drawable/bluetheme"
-        android:id="@+id/btn_credits"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/droid10"
+            android:layout_gravity="center"
+            android:paddingBottom="12sp" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/CoolText"
-        android:text="@string/about"
-        android:background="@drawable/bluetheme"
-        android:id="@+id/btn_about"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/CoolText"
-        android:text="@string/vectors"
-        android:background="@drawable/bluetheme"
-        android:id="@+id/btn_vectors"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dibyendu"
-        android:paddingTop="20sp"
-        android:layout_gravity="center"
-        style="@style/CoolText"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/droid_10"
+            android:layout_gravity="center"
+            android:paddingBottom="12sp" />
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/sillycon"
-        android:layout_gravity="center" />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/scan"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_scan"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/livescan"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_livescan"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/credits"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_credits"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/about"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_about"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
+            android:text="@string/vectors"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_vectors"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dibyendu"
+            android:paddingTop="20sp"
+            android:layout_gravity="center"
+            style="@style/CoolText"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sillycon"
-        android:layout_gravity="center"
-        style="@style/CoolText"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sillycon"
+            android:layout_gravity="center" />
 
-</LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sillycon"
+            android:layout_gravity="center"
+            style="@style/CoolText"/>
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

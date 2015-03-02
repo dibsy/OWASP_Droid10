@@ -31,7 +31,7 @@ public class XSSVectors extends ActionBarActivity {
         final CrossSiteScriptingVectorModel crossSiteScriptingVectorModel=CrossSiteScriptingVectorModel.getInstance();
 
         crossSiteScriptingVectorModel.setup(XSSVectors.this);
-        crossSiteScriptingVectorModel.preload();
+        //crossSiteScriptingVectorModel.preload();
 
         Button read=(Button)findViewById(R.id.btn_viewxssvectors);
         read.setOnClickListener(new View.OnClickListener() {

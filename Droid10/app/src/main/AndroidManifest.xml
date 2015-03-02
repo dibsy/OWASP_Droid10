@@ -43,6 +43,10 @@
             android:name=".VectorActivity"
             android:label="@string/title_activity_vector" >
         </activity>
+        <activity
+            android:name=".LiveScanActivity"
+            android:label="@string/title_activity_live_scan" >
+        </activity>
     </application>
 
 </manifest>

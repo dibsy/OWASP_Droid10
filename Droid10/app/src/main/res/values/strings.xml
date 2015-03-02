@@ -8,6 +8,7 @@
     <string name="credits">Credits</string>
     <string name="about">About</string>
     <string name="scan">Scan</string>
+    <string name="livescan">Live Scan</string>
     <string name="title_activity_about">About</string>
     <string name="about_content">OWASP Droid10 is an opensource  handheld based (android) web pen testing tool. It can scan for web application vulnerability from any android device.Some features can be customized according to testers need.</string>
     <string name="title_activity_scan">ScanActivity</string>
@@ -23,5 +24,7 @@
     <string name="title_activity_xssvectors">XSSVectors</string>
     <string name="vectors">Vectors</string>
     <string name="title_activity_vector">VectorActivity</string>
-
+    <string name="title_activity_live_scan">LiveScanActivity</string>
+    <string name="vulnselect">Select type of vulnerability</string>
+    <string name="progress">Waiting to scan</string>
 </resources>

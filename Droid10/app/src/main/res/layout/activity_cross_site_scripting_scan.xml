@@ -26,4 +26,7 @@
         android:id="@+id/btn_hack"
         android:text="Test"
         android:layout_gravity="center" />
+    <WebView
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"></WebView>
  </LinearLayout>

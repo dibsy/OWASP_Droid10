@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.dibsyhex.droid10.database.StorageHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,6 +19,14 @@ import java.util.List;
 public class CrossSiteScriptingVectorModel {
     private StorageHelper storageHelper;
     private static CrossSiteScriptingVectorModel crossSiteScriptingVectorModel=new CrossSiteScriptingVectorModel();
+    private static final String[]crossSiteScriptingVectors=new String []{
+            "<script>alert(1);</script>",
+            "<img src=x onerror=alert(1)>",
+            "\"><img src=x onerror=alert(1)>",
+            "\"\"><img%20src=x>"
+    };
+
+
     public void setup(Context context){
         final String vectorID="vectorid";
         final String vectorName="vectorname";
@@ -37,17 +46,7 @@ public class CrossSiteScriptingVectorModel {
         return crossSiteScriptingVectorModel;
     }
 
-    public void preload(){
-        String preloadedVectors[]={
-                "<script>alert(1);</script>",
-                "<img src=x onerror=alert(1)>"
-        };
 
-        for(String x:preloadedVectors){
-            add(x);
-        }
-
-    }
 
     public void add(String vector){
         try {
@@ -102,17 +101,11 @@ public class CrossSiteScriptingVectorModel {
 
     }
 
-    public List getVectorsList(){
+    public static List getVectorsList(){
         List<String>vectorsList=new ArrayList<String>();
         try{
-            Cursor c=storageHelper.retrieve();
-            if(c.moveToFirst()){
-                do{
-                    vectorsList.add(c.getString(1));
-                }while (c.moveToNext());
-            }else{
+           vectorsList= Arrays.asList(crossSiteScriptingVectors);
 
-            }
         }catch (Exception e){
             Log.e("ERROR","getVectorList():"+e.toString());
         }
