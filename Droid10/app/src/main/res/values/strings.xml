@@ -27,4 +27,10 @@
     <string name="title_activity_live_scan">LiveScanActivity</string>
     <string name="vulnselect">Select type of vulnerability</string>
     <string name="progress">Waiting to scan</string>
+    <string name="title_activity_repeater">Repeater</string>
+    <string name="request">Request</string>
+    <string name="fetch">Fetch</string>
+    <string name="replay">Replay</string>
+    <string name="response">Response</string>
+
 </resources>

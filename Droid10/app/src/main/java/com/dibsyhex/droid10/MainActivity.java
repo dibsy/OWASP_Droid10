@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 
         //Intitalize the database
 
-
+        //Scan Button
         Button btn_scan=(Button)findViewById(R.id.btn_scan);
         btn_scan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,6 +29,8 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        //Live Scan Button
         Button btn_livescan=(Button)findViewById(R.id.btn_livescan);
         btn_livescan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +41,7 @@ public class MainActivity extends Activity {
         });
 
 
+        //Credits Button
         Button btn_credits=(Button)findViewById(R.id.btn_credits);
         btn_credits.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,8 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        //About Button
         Button btn_about=(Button)findViewById(R.id.btn_about);
         btn_about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +62,8 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        //Vector Button
         Button btn_vector=(Button)findViewById(R.id.btn_vectors);
         btn_vector.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +73,15 @@ public class MainActivity extends Activity {
             }
         });
 
+        //Repeater Button
+        Button btn_repeater=(Button)findViewById(R.id.btn_repeater);
+        btn_repeater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent repeater_intent=new Intent(MainActivity.this,RepeaterActivity.class);
+                MainActivity.this.startActivity(repeater_intent);
+            }
+        });
 
     }
 

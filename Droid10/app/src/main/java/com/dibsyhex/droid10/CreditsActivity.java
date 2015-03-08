@@ -1,6 +1,7 @@
 package com.dibsyhex.droid10;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,28 +11,38 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+    Credits Activity : To control credits view
+ */
 
-public class CreditsActivity extends ActionBarActivity {
+
+public class CreditsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credits);
 
+
+        //Credits List
         String list[]=new String[]{
           "Kate Hartmann ",
           "Johanna Curiel",
-          "Krishnendu Paul @bidhata"
+          "Krishnendu Paul @bidhata",
+          "Wfuzz github.com/xmendez/wfuzz/"
         };
 
-
+        //List to store all the information from the array
         ArrayList<String>credits=new ArrayList<String>();
         credits.addAll(Arrays.asList(list));
 
-
+        //Get the listview
         ListView creditsList=(ListView)findViewById(R.id.creditslist);
 
+        //ArrayAdapter for the list view
         ArrayAdapter<String>arrayAdapter=new ArrayAdapter<String>(this,R.layout.simple_list_item_1,credits);
+
+        //Add the adapted to the listview
         creditsList.setAdapter(arrayAdapter);
 
 

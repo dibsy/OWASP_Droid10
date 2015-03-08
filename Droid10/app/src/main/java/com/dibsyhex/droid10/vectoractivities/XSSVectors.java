@@ -30,39 +30,6 @@ public class XSSVectors extends ActionBarActivity {
 
         final CrossSiteScriptingVectorModel crossSiteScriptingVectorModel=CrossSiteScriptingVectorModel.getInstance();
 
-        crossSiteScriptingVectorModel.setup(XSSVectors.this);
-        //crossSiteScriptingVectorModel.preload();
-
-        Button read=(Button)findViewById(R.id.btn_viewxssvectors);
-        read.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                crossSiteScriptingVectorModel.read(XSSVectors.this);
-            }
-        });
-
-        Button add=(Button)findViewById(R.id.btn_addxssvectors);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText edttxt=(EditText)findViewById(R.id.edttxt_vector);
-                String vector=edttxt.getText().toString();
-                crossSiteScriptingVectorModel.add(vector);
-
-
-            }
-        });
-
-        Button delete=(Button)findViewById(R.id.btn_deletexssvectors);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editext=(EditText)findViewById(R.id.edttxt_id);
-                int vectorID=Integer.parseInt(editext.getText().toString());
-                crossSiteScriptingVectorModel.delete(vectorID);
-
-            }
-        });
 
 
 

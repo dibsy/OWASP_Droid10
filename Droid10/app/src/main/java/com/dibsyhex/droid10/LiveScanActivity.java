@@ -21,6 +21,8 @@ import com.dibsyhex.droid10.asynctask.LiveScanAsync;
 import com.dibsyhex.droid10.interfaces.AsyncResponse;
 import com.dibsyhex.droid10.vectoractivities.XSSVectors;
 import com.dibsyhex.droid10.vectormodels.CrossSiteScriptingVectorModel;
+import com.dibsyhex.droid10.vectormodels.FileInclusionVectorModel;
+import com.dibsyhex.droid10.vectormodels.ServerSideIncludeVectorModel;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -46,7 +48,7 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
         setContentView(R.layout.activity_live_scan);
 
 
-        //Webview
+
         try {
 
 
@@ -54,8 +56,9 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Toast.makeText(LiveScanActivity.this,"SD",Toast.LENGTH_LONG).show();
-                    selectScan();
+                    //First select the type of vulnerability and store the selection list;
+                    //selectScan();
+                    //Second conduct the scan
                     vulnScan();
 
                 }
@@ -71,7 +74,10 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
 
             //List of vulnerabilities . The first one has an index 0 ,second one has 1 ,and so on
             List<String> vulnlist = new ArrayList<String>();
+            vulnlist.add("Select type");
             vulnlist.add("Cross Site Scripting");
+            vulnlist.add("Server Side Includes");
+            vulnlist.add("Local File Inclusion");
             vulnlist.add("SQL Injection");
             vulnlist.add("Command Injection");
             vulnlist.add("File Inclusion");
@@ -94,8 +100,10 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    //Toast.makeText(LiveScanActivity.this, "Selected: " + position, Toast.LENGTH_LONG).show();
-                    vulnIndex = position;
+                    Toast.makeText(LiveScanActivity.this, "Selected: " + position, Toast.LENGTH_LONG).show();
+                    vulnIndex = position;//update index
+                    count = 0;//set count to 0
+                    selectScan();
                 }
 
                 @Override
@@ -124,48 +132,89 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
        This function is used to select the type of scan and call the required async task to carry out the work
 
     */
+        Toast.makeText(this,"Scan :"+vulnIndex,Toast.LENGTH_LONG).show();
+
         switch (vulnIndex){
             case 0:
+
+                break;
+            case 1:
                 vectorList = CrossSiteScriptingVectorModel.getVectorsList();
                 totalVectors = vectorList.size();
                 break;
-            case 1:
-                break;
+
             case 2:
+                vectorList = ServerSideIncludeVectorModel.getVectorsList();
+                totalVectors = vectorList.size();
                 break;
+
             case 3:
+                vectorList = FileInclusionVectorModel.getVectorsList();
+                totalVectors = vectorList.size();
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 6:
                 break;
             default:
-                vectorList=CrossSiteScriptingVectorModel.getVectorsList();
+                break;
 
         }
 
     }
 
     public void vulnScan(){
+
+
+
         try {
 
-            if(count == vectorList.size())
-                count=0;
+            if(count == vectorList.size()) {
+                count = 0;
+                vectorList.clear();
+                updateVectorHeading.setText("All vectors checked");
+                return;
+            }
 
-            String vector=vectorList.get(count);
-            //Now URL Encode it
-            vector= URLEncoder.encode(vector,"UTF-8");
 
-            updateVectorHeading.setText("Trying vector "+"("+count+"/"+totalVectors+") "+vector);
-            String url=scanurl.getText().toString()+vector;
+            //Only if the type is selected
+            String url;
+            if(vulnIndex == 0){
+                url = scanurl.getText().toString();
+            }else {
+                //Get the vector from the list at index count
+                String vector = vectorList.get(count);
 
-            count++;
+                //Now URL Encode the vector
+                vector = URLEncoder.encode(vector, "UTF-8");
 
-            //new LiveScanAsync(LiveScanActivity.this).execute(url);
+                //Set the text like "Trying vector 1/20  attack vector"
+                updateVectorHeading.setText("Trying vector " + "(" + (count + 1) + "/" + totalVectors + ") " + vector);
 
+                //Append the vector to the url
+                url = scanurl.getText().toString() + vector;
+
+                //Update the counter
+                count++;
+            }
+
+
+            //Create a variable for LiveScanAsync
             LiveScanAsync liveScanAsync=new LiveScanAsync(LiveScanActivity.this);
+
+            //Store the current invoking object in delegate
             liveScanAsync.delegate=this;
 
+            //execute the async operation and pass the url as parameter
             liveScanAsync.execute(url);
 
         }catch (Exception e){
-            Log.e("ERROR",e.toString());
+            Log.e("ERROR","Error in vulnScan():"+e.toString());
 
         }
         /*
@@ -186,7 +235,7 @@ public class LiveScanActivity extends ActionBarActivity implements AsyncResponse
             webView.loadUrl("about:blank");
             webView.loadData(output, "text/html", "UTF-8");
         }catch (Exception e){
-            Log.e("ERROR",e.toString());
+            Log.e("ERROR","Error in WebView:"+e.toString());
         }
     }
 

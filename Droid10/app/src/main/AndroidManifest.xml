@@ -47,6 +47,10 @@
             android:name=".LiveScanActivity"
             android:label="@string/title_activity_live_scan" >
         </activity>
+        <activity
+            android:name=".RepeaterActivity"
+            android:label="@string/title_activity_repeater" >
+        </activity>
     </application>
 
 </manifest>

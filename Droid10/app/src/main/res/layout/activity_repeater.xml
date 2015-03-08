@@ -1,0 +1,80 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.dibsyhex.droid10.RepeaterActivity"
+    android:background="@drawable/bluetheme">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bluetheme">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_activity_repeater"
+            style="@style/CoolText"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editext_repeaterurl"
+            android:hint="Enter the url"
+            style="@style/CoolText"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fetch"
+            android:id="@+id/button_request"
+            style="@style/CoolText"
+            android:background="@drawable/bluetheme"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/replay"
+            android:id="@+id/button_replay"
+            style="@style/CoolText"
+            android:background="@drawable/bluetheme"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/request"
+            style="@style/CoolText"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/editext_repeaterrequest"
+            style="@style/CoolText"
+            android:autoText="false" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/response"
+            style="@style/CoolText"/>
+
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editext_repeaterresponse"
+            style="@style/CoolText"
+            android:autoText="false" />
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

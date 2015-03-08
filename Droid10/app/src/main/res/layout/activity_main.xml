@@ -48,6 +48,15 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             style="@style/CoolText"
+            android:text="@string/title_activity_repeater"
+            android:background="@drawable/bluetheme"
+            android:id="@+id/btn_repeater"/>
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            style="@style/CoolText"
             android:text="@string/credits"
             android:background="@drawable/bluetheme"
             android:id="@+id/btn_credits"/>
