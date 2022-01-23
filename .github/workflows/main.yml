@@ -24,4 +24,4 @@ jobs:
     steps:
       - uses: sfdx-actions/setup-pmd@v1
       - name: run-pmd
-        run: pmd -d ./ -R  rulesets/java/quickstart.xml -f text
+        run: ls -la
